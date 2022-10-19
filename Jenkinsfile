@@ -10,6 +10,11 @@ pipeline{
                         git poll: false, url: 'https://gitlab.com/qacdevops/chaperootodo_client'
                     }
             }
+            stage('Deploy'){
+                    steps{
+                    sh 'docker-compose pull && sudo -E DB_PASSWORD=${DB_PASSWORD} docker-compose up -d.'
+                    }
+            }
             stage('Build Image'){
                 steps{
                     script{
