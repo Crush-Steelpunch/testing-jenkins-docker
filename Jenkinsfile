@@ -12,7 +12,7 @@ pipeline{
             }
             stage('Deploy'){
                     steps{
-                    sh 'docker-compose pull && sudo -E DB_PASSWORD=${DB_PASSWORD} docker-compose up -d.'
+                    sh 'docker compose pull && sudo -E DB_PASSWORD=${DB_PASSWORD} docker compose up -d.'
                     }
             }
             stage('Build Image'){
