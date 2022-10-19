@@ -10,11 +10,6 @@ pipeline{
                         git poll: false, url: 'https://gitlab.com/qacdevops/chaperootodo_client'
                     }
             }
-            stage('Deploy'){
-                    steps{
-                    sh 'docker compose pull && DB_PASSWORD=${DB_PASSWORD} docker compose up -d'
-                    }
-            }
             stage('Build Image'){
                 steps{
                     script{
@@ -37,7 +32,7 @@ pipeline{
             }
             stage('Deploy App'){
                 steps{
-                    sh "docker-compose pull && docker-compose up -d"
+                    sh "docker compose pull && docker compose up -d"
                 }
             }
         }
