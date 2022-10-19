@@ -5,6 +5,11 @@ pipeline{
             rollback = 'false'
         }
         stages{
+            stage('Clone Chapertoo'){
+                    steps{
+                        git poll: false, url: 'https://gitlab.com/qacdevops/chaperootodo_client'
+                    }
+            }
             stage('Build Image'){
                 steps{
                     script{
